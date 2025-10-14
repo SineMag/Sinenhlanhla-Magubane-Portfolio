@@ -7,6 +7,12 @@ interface Experience {
   description: string;
 }
 
+interface Education {
+  degree: string;
+  institution: string;
+  year: string;
+}
+
 interface SkillCategory {
   category: string;
   skills: string[];
@@ -60,11 +66,28 @@ const CV: React.FC = () => {
   ].filter(exp => exp.title);
 
   // Education from .env
-  const education = {
-    degree: import.meta.env.VITE_EDUCATION_1_DEGREE || '',
-    institution: import.meta.env.VITE_EDUCATION_1_INSTITUTION || '',
-    year: import.meta.env.VITE_EDUCATION_1_YEAR || '',
-  };
+  const educationList: Education[] = [
+    {
+      degree: import.meta.env.VITE_EDUCATION_1_DEGREE || '',
+      institution: import.meta.env.VITE_EDUCATION_1_INSTITUTION || '',
+      year: import.meta.env.VITE_EDUCATION_1_YEAR || '',
+    },
+    {
+      degree: import.meta.env.VITE_EDUCATION_2_DEGREE || '',
+      institution: import.meta.env.VITE_EDUCATION_2_INSTITUTION || '',
+      year: import.meta.env.VITE_EDUCATION_2_YEAR || '',
+    },
+    {
+      degree: import.meta.env.VITE_EDUCATION_3_DEGREE || '',
+      institution: import.meta.env.VITE_EDUCATION_3_INSTITUTION || '',
+      year: import.meta.env.VITE_EDUCATION_3_YEAR || '',
+    },
+    {
+      degree: import.meta.env.VITE_EDUCATION_4_DEGREE || '',
+      institution: import.meta.env.VITE_EDUCATION_4_INSTITUTION || '',
+      year: import.meta.env.VITE_EDUCATION_4_YEAR || '',
+    },
+  ].filter(edu => edu.degree);
 
   return (
     <div className="section">
@@ -101,22 +124,37 @@ const CV: React.FC = () => {
 
         <div className="card">
           <h3>Experience</h3>
-          {experiences.map((exp, index) => (
-            <div key={index} style={{ marginBottom: '2rem' }}>
-              <h4>{exp.title}</h4>
-              <p><strong>{exp.company}</strong></p>
-              <p>{exp.period}</p>
-              <p>{exp.description}</p>
-            </div>
-          ))}
+          {experiences.map((exp, index) => {
+            const duties = exp.description.split('||').filter(Boolean);
+            return (
+              <div key={index} style={{ marginBottom: '2rem' }}>
+                <h4>{exp.title}</h4>
+                <p><strong>{exp.company}</strong></p>
+                <p>{exp.period}</p>
+                {duties.length > 1 ? (
+                  <ul style={{ marginTop: '0.5rem', paddingLeft: '1.5rem' }}>
+                    {duties.map((duty, idx) => (
+                      <li key={idx}>{duty}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>{exp.description}</p>
+                )}
+              </div>
+            );
+          })}
         </div>
 
-        {education.degree && (
+        {educationList.length > 0 && (
           <div className="card">
             <h3>Education</h3>
-            <h4>{education.degree}</h4>
-            <p>{education.institution}</p>
-            <p>{education.year}</p>
+            {educationList.map((edu, index) => (
+              <div key={index} style={{ marginBottom: index < educationList.length - 1 ? '1.5rem' : '0' }}>
+                <h4>{edu.degree}</h4>
+                <p>{edu.institution}</p>
+                <p>{edu.year}</p>
+              </div>
+            ))}
           </div>
         )}
       </div>
