@@ -92,6 +92,18 @@ const CV2: React.FC = () => {
     "Store Assistant": "🛒",
   };
 
+  const handleDownload = () => {
+    const element = document.getElementById("cv-content");
+    const opt = {
+      margin:       0.5,
+      filename:     'Sinenhlanhla_Magubane_CV.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2 },
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(element).save();
+  };
+
   return (
     <div className="dashboard-container">
       <div className="dashboard-header">
@@ -106,52 +118,55 @@ const CV2: React.FC = () => {
           {linkedin && <a href={linkedin} target="_blank" rel="noopener noreferrer" className="tech-tag">LinkedIn</a>}
           {github && <a href={github} target="_blank" rel="noopener noreferrer" className="tech-tag">GitHub</a>}
         </div>
+        <button className="btn download-btn" onClick={handleDownload}>Download as PDF</button>
       </div>
 
-      <div className="dashboard-card">
-        <h3>Skills</h3>
-        <div className="skills-grid">
-          {skillCategories.map((category, index) => (
-            <div key={index} className="skill-category">
-              <h4>{category.category}</h4>
-              <div className="tech-tags">
-                {category.skills.map((skill, skillIndex) => (
-                  <span key={skillIndex} className="tech-tag">{skill}</span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="dashboard-card">
-        <h3>Experience</h3>
-        <div className="experience-grid">
-          {experiences.map((exp, index) => (
-            <div key={index} className="experience-card">
-              <h4>{experienceIconMap[exp.title] || "💼"} {exp.title}</h4>
-              <p><strong>{exp.company}</strong> | {exp.period}</p>
-              <ul>
-                {exp.description.split("||").map((duty, idx) => (
-                  <li key={idx}>{duty}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {educationList.length > 0 && (
+      <div id="cv-content">
         <div className="dashboard-card">
-          <h3>Education</h3>
-          {educationList.map((edu, index) => (
-            <div key={index} className="education-item">
-              <h4>{edu.degree}</h4>
-              <p>{edu.institution} | {edu.year}</p>
-            </div>
-          ))}
+          <h3>Skills</h3>
+          <div className="skills-grid">
+            {skillCategories.map((category, index) => (
+              <div key={index} className="skill-category">
+                <h4>{category.category}</h4>
+                <div className="tech-tags">
+                  {category.skills.map((skill, skillIndex) => (
+                    <span key={skillIndex} className="tech-tag">{skill}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      )}
+
+        <div className="dashboard-card">
+          <h3>Experience</h3>
+          <div className="experience-grid">
+            {experiences.map((exp, index) => (
+              <div key={index} className="experience-card">
+                <h4>{experienceIconMap[exp.title] || "💼"} {exp.title}</h4>
+                <p><strong>{exp.company}</strong> | {exp.period}</p>
+                <ul>
+                  {exp.description.split("||").map((duty, idx) => (
+                    <li key={idx}>{duty}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {educationList.length > 0 && (
+          <div className="dashboard-card">
+            <h3>Education</h3>
+            {educationList.map((edu, index) => (
+              <div key={index} className="education-item">
+                <h4>{edu.degree}</h4>
+                <p>{edu.institution} | {edu.year}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

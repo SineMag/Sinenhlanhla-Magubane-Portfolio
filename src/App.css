@@ -253,10 +253,30 @@ main {
   gap: 2rem;
 }
 
-.footer-section {
-  flex: 1;
-  padding: 0 1rem;
-  text-align: center;
+.download-btn {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  color: #fff;
+  background: linear-gradient(45deg, #00796b, #004d40, #00796b, #004d40);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+  border: none;
+  cursor: pointer;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .footer-bottom {
@@ -414,14 +434,25 @@ main {
   margin-top: 1rem;
 }
 
-.social-links a {
-  color: #fff;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border: 1px solid #00796b;
-  border-radius: 4px;
-  background: #004d40;
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
 }
+
+
+.dashboard-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #00796b;
+}
+
+
 
 /* Responsive */
 @media (max-width: 768px) {
