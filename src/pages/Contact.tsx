@@ -6,7 +6,7 @@ const Contact: React.FC = () => {
   const [state, handleSubmit] = useForm("mnngkkbj");
 
   if (state.succeeded) {
-    return <p>Thanks for your message!</p>;
+    return <div className="success-message-container"><div className="success-message-card"><p className="success-message">Thanks for your message! I’m grateful you took the time to connect and will respond shortly.</p></div></div>;
   }
 
   const email = import.meta.env.VITE_EMAIL || 'snenhlanhlamagubane@gmail.com';
@@ -62,6 +62,22 @@ const Contact: React.FC = () => {
             <ValidationError 
               prefix="Email"
               field="email"
+              errors={state.errors}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="subject" className="form-label">Subject</label>
+            <input
+              id="subject"
+              type="text" 
+              name="subject"
+              className="form-input"
+              placeholder="What's this about?"
+            />
+            <ValidationError 
+              prefix="Subject"
+              field="subject"
               errors={state.errors}
             />
           </div>
