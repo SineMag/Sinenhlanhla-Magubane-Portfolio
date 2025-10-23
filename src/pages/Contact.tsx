@@ -1,47 +1,19 @@
 
-import React, { useState } from 'react';
-
-const Snackbar: React.FC<{ message: string; show: boolean }> = ({ message, show }) => {
-  return (
-    <div className={`snackbar ${show ? "show" : ""}`}>
-      {message}
-    </div>
-  );
-};
+import React from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
+  const [state, handleSubmit] = useForm("mnngkkbj");
 
-  const [showSnackbar, setShowSnackbar] = useState(false);
+  if (state.succeeded) {
+    return <p>Thanks for your message!</p>;
+  }
 
-  const emailTo = 'snenhlanhlamagubane99@gmail.com';
   const email = import.meta.env.VITE_EMAIL || 'snenhlanhlamagubane@gmail.com';
   const phone = import.meta.env.VITE_PHONE || '';
   const location = import.meta.env.VITE_LOCATION || '';
   const linkedin = import.meta.env.VITE_LINKEDIN || '';
   const github = import.meta.env.VITE_GITHUB || '';
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const { name, subject, message } = formData;
-    const mailtoLink = `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\n\nMessage: ${message}`)}`;
-    window.location.href = mailtoLink;
-    setShowSnackbar(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setTimeout(() => setShowSnackbar(false), 5000);
-  };
 
   return (
     <div className="dashboard-container">
@@ -65,42 +37,32 @@ const Contact: React.FC = () => {
           <div className="form-group">
             <label htmlFor="name" className="form-label">Name</label>
             <input
-              type="text"
               id="name"
+              type="text" 
               name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
               className="form-input"
               placeholder="Your Name"
+            />
+            <ValidationError 
+              prefix="Name"
+              field="name"
+              errors={state.errors}
             />
           </div>
 
           <div className="form-group">
             <label htmlFor="email" className="form-label">Email</label>
             <input
-              type="email"
               id="email"
+              type="email" 
               name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
               className="form-input"
               placeholder="your.email@example.com"
             />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="subject" className="form-label">Subject</label>
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              value={formData.subject}
-              onChange={handleChange}
-              required
-              className="form-input"
-              placeholder="What's this about?"
+            <ValidationError 
+              prefix="Email"
+              field="email"
+              errors={state.errors}
             />
           </div>
 
@@ -109,18 +71,19 @@ const Contact: React.FC = () => {
             <textarea
               id="message"
               name="message"
-              value={formData.message}
-              onChange={handleChange}
-              required
               className="form-textarea"
               placeholder="Your message here..."
             />
+            <ValidationError 
+              prefix="Message"
+              field="message"
+              errors={state.errors}
+            />
           </div>
 
-          <button type="submit" className="btn">Send Message</button>
+          <button type="submit" className="btn" disabled={state.submitting}>Send Message</button>
         </form>
       </div>
-      <Snackbar message="Your message has been sent!" show={showSnackbar} />
     </div>
   );
 };
