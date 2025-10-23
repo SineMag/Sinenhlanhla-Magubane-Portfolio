@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -19,13 +20,13 @@ const Footer: React.FC = () => {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <div>
+        <div className="footer-section">
           <h4>{name}</h4>
           <p>Full Stack Developer</p>
           {email && <a href={`mailto:${email}`}>{email}</a>}
         </div>
 
-        <div>
+        <div className="footer-section">
           <h4>Quick Links</h4>
           <ul className="footer-links">
             {quickLinks.map((link) => (
@@ -36,7 +37,7 @@ const Footer: React.FC = () => {
           </ul>
         </div>
 
-        <div>
+        <div className="footer-section">
           <h4>Connect</h4>
           <ul className="footer-links">
             {github && (
@@ -56,26 +57,13 @@ const Footer: React.FC = () => {
           </ul>
         </div>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginTop: "3rem",
-          paddingTop: "2rem",
-          paddingBottom: "2rem",
-          paddingLeft: "20px",
-          paddingRight: "20px",
-          borderTop: "1px solid #333",
-        }}
-      >
+      <div className="footer-bottom">
         <p>© {currentYear} {name}</p>
-        <Link to="/privacy" style={{ textDecoration: "underline" }}>
-          Privacy Policy
-        </Link>
+        <Link to="/privacy">Privacy Policy</Link>
       </div>
     </footer>
   );
 };
 
 export default Footer;
+

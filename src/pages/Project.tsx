@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 interface Project {
@@ -48,42 +49,36 @@ const Project: React.FC = () => {
   ].filter(project => project.name);
 
   return (
-    <div className="section">
-      <div className="container">
-        <h1 className="section-title">My Projects</h1>
-        <p style={{ textAlign: 'center', marginBottom: '3rem', color: '#666' }}>
-          A collection of my recent work and side projects
-        </p>
-
-        <div className="projects-grid">
-          {projects.map((project, index) => (
-            <div key={index} className="project-card">
-              <h3>{project.name}</h3>
-              <p>{project.description}</p>
-              
-              <div className="tech-tags">
-                {project.tech.map((tech, techIndex) => (
-                  <span key={techIndex} className="tech-tag">{tech}</span>
-                ))}
-              </div>
-
-              {project.link && (
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
-                  View Project →
-                </a>
-              )}
+    <div className="dashboard-container">
+      <div className="dashboard-header">
+        <h1>My Projects</h1>
+      </div>
+      <div className="projects-grid">
+        {projects.map((project, index) => (
+          <div key={index} className="dashboard-card">
+            <h3>{project.name}</h3>
+            <p>{project.description}</p>
+            <div className="tech-tags">
+              {project.tech.map((tech, techIndex) => (
+                <span key={techIndex} className="tech-tag">{tech}</span>
+              ))}
             </div>
-          ))}
-        </div>
-
-        <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-          <a href={import.meta.env.VITE_GITHUB || '#'} target="_blank" rel="noopener noreferrer" className="btn">
-            View All on GitHub
-          </a>
-        </div>
+            {project.link && (
+              <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
+                View Project →
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+      <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+        <a href={import.meta.env.VITE_GITHUB || '#'} target="_blank" rel="noopener noreferrer" className="btn">
+          View All on GitHub
+        </a>
       </div>
     </div>
   );
 };
 
 export default Project;
+
