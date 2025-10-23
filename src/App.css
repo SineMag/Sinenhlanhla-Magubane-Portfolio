@@ -428,16 +428,20 @@ main {
   text-align: center;
 }
 
-.social-links {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
+.contact-info-container {
+  width: 100%;
 }
 
-.social-links {
+.contact-info {
   display: flex;
+  justify-content: center;
   gap: 1rem;
-  margin-top: 1rem;
+  width: 100%;
+}
+
+.social-links a {
+  color: #fff;
+  text-decoration: none;
 }
 
 

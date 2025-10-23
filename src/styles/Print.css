@@ -1,0 +1,40 @@
+
+@media print {
+  body {
+    background-color: #fff;
+    color: #000;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .dashboard-container {
+    box-shadow: none;
+  }
+
+  .dashboard-header h1, .dashboard-header h2, .dashboard-header .contact-info, .dashboard-header .social-links {
+    text-align: left;
+  }
+
+  .dashboard-header h1 {
+    font-size: 24pt;
+  }
+
+  .dashboard-header h2 {
+    font-size: 18pt;
+  }
+
+  .dashboard-card {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav, .footer, .download-btn, .no-print {
+    display: none;
+  }
+
+  @page {
+    margin: 0.75in;
+    size: letter;
+  }
+}

@@ -18,6 +18,7 @@ interface SkillCategory {
   skills: string[];
 }
 
+
 const CV2: React.FC = () => {
   const name = import.meta.env.VITE_NAME || "Sinenhlanhla Magubane";
   const title = import.meta.env.VITE_TITLE || "Full Stack Developer";
@@ -92,36 +93,24 @@ const CV2: React.FC = () => {
     "Store Assistant": "🛒",
   };
 
-  const handleDownload = () => {
-    const element = document.getElementById("cv-content");
-    const opt = {
-      margin:       0.5,
-      filename:     'Sinenhlanhla_Magubane_CV.pdf',
-      image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 2 },
-      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-    };
-    html2pdf().set(opt).from(element).save();
-  };
-
   return (
-    <div className="dashboard-container">
-      <div className="dashboard-header">
-        <h1>{name}</h1>
-        <h2>{title}</h2>
-        <div className="contact-info">
-          {email && <p>Email: {email}</p>}
-          {phone && <p>Phone: {phone}</p>}
-          {location && <p>Location: {location}</p>}
-        </div>
-        <div className="social-links">
-          {linkedin && <a href={linkedin} target="_blank" rel="noopener noreferrer" className="tech-tag">LinkedIn</a>}
-          {github && <a href={github} target="_blank" rel="noopener noreferrer" className="tech-tag">GitHub</a>}
-        </div>
-        <button className="btn download-btn" onClick={handleDownload}>Download as PDF</button>
-      </div>
-
+    <div>
       <div id="cv-content">
+        <div className="dashboard-header">
+          <h1>{name}</h1>
+          <h2>{title}</h2>
+          <div className="contact-info">
+            {email && <p>Email: {email}</p>}
+            {phone && <p>Phone: {phone}</p>}
+            {location && <p>Location: {location}</p>}
+          </div>
+          <div className="social-links">
+            {linkedin && <a href={linkedin} target="_blank" rel="noopener noreferrer" className="tech-tag">LinkedIn</a>}
+            {github && <a href={github} target="_blank" rel="noopener noreferrer" className="tech-tag">GitHub</a>}
+          </div>
+          <a href="/Updated CV for SMagubane.pdf" target="_blank" rel="noopener noreferrer" className="btn download-btn no-print">Download as PDF</a>
+        </div>
+
         <div className="dashboard-card">
           <h3>Skills</h3>
           <div className="skills-grid">
