@@ -1,4 +1,3 @@
-
 import React from "react";
 
 interface Experience {
@@ -17,12 +16,6 @@ interface Education {
 interface SkillCategory {
   category: string;
   skills: string[];
-}
-
-interface Project {
-  name: string;
-  description: string;
-  url: string;
 }
 
 const CV2: React.FC = () => {
@@ -93,18 +86,11 @@ const CV2: React.FC = () => {
     },
   ].filter((edu) => edu.degree);
 
-  const projects: Project[] = [
-    {
-      name: "Project 1",
-      description: "A brief description of your project.",
-      url: "https://github.com/SineMag/",
-    },
-    {
-      name: "Project 2",
-      description: "A brief description of your project.",
-      url: "https://github.com/SineMag/",
-    },
-  ];
+  const experienceIconMap: { [key: string]: string } = {
+    "Junior Full Stack Developer": "👨‍💻",
+    "Administrative Assistant": "💼",
+    "Store Assistant": "🛒",
+  };
 
   return (
     <div className="dashboard-container">
@@ -115,8 +101,10 @@ const CV2: React.FC = () => {
           {email && <p>Email: {email}</p>}
           {phone && <p>Phone: {phone}</p>}
           {location && <p>Location: {location}</p>}
-          {linkedin && <a href={linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>}
-          {github && <a href={github} target="_blank" rel="noopener noreferrer">GitHub</a>}
+        </div>
+        <div className="social-links">
+          {linkedin && <a href={linkedin} target="_blank" rel="noopener noreferrer" className="tech-tag">LinkedIn</a>}
+          {github && <a href={github} target="_blank" rel="noopener noreferrer" className="tech-tag">GitHub</a>}
         </div>
       </div>
 
@@ -126,11 +114,11 @@ const CV2: React.FC = () => {
           {skillCategories.map((category, index) => (
             <div key={index} className="skill-category">
               <h4>{category.category}</h4>
-              <ul>
+              <div className="tech-tags">
                 {category.skills.map((skill, skillIndex) => (
-                  <li key={skillIndex}>{skill}</li>
+                  <span key={skillIndex} className="tech-tag">{skill}</span>
                 ))}
-              </ul>
+              </div>
             </div>
           ))}
         </div>
@@ -138,27 +126,19 @@ const CV2: React.FC = () => {
 
       <div className="dashboard-card">
         <h3>Experience</h3>
-        {experiences.map((exp, index) => (
-          <div key={index} className="experience-item">
-            <h4>{exp.title}</h4>
-            <p><strong>{exp.company}</strong> | {exp.period}</p>
-            <ul>
-              {exp.description.split("||").map((duty, idx) => (
-                <li key={idx}>{duty}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-
-      <div className="dashboard-card">
-        <h3>Projects</h3>
-        {projects.map((project, index) => (
-          <div key={index} className="project-item">
-            <h4><a href={project.url} target="_blank" rel="noopener noreferrer">{project.name}</a></h4>
-            <p>{project.description}</p>
-          </div>
-        ))}
+        <div className="experience-grid">
+          {experiences.map((exp, index) => (
+            <div key={index} className="experience-card">
+              <h4>{experienceIconMap[exp.title] || "💼"} {exp.title}</h4>
+              <p><strong>{exp.company}</strong> | {exp.period}</p>
+              <ul>
+                {exp.description.split("||").map((duty, idx) => (
+                  <li key={idx}>{duty}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
 
       {educationList.length > 0 && (

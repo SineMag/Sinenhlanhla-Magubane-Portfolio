@@ -46,6 +46,12 @@ const Project: React.FC = () => {
       tech: (import.meta.env.VITE_PROJECT_6_TECH || '').split(',').filter(Boolean),
       link: import.meta.env.VITE_PROJECT_6_LINK || '',
     },
+    {
+      name: import.meta.env.VITE_PROJECT_7_NAME || '',
+      description: import.meta.env.VITE_PROJECT_7_DESCRIPTION || '',
+      tech: (import.meta.env.VITE_PROJECT_7_TECH || '').split(',').filter(Boolean),
+      link: import.meta.env.VITE_PROJECT_7_LINK || '',
+    },
   ].filter(project => project.name);
 
   return (

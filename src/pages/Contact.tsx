@@ -1,6 +1,14 @@
 
 import React, { useState } from 'react';
 
+const Snackbar: React.FC<{ message: string; show: boolean }> = ({ message, show }) => {
+  return (
+    <div className={`snackbar ${show ? "show" : ""}`}>
+      {message}
+    </div>
+  );
+};
+
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -9,8 +17,9 @@ const Contact: React.FC = () => {
     message: '',
   });
 
-  const [status, setStatus] = useState('');
+  const [showSnackbar, setShowSnackbar] = useState(false);
 
+  const emailTo = 'snenhlanhlamagubane99@gmail.com';
   const email = import.meta.env.VITE_EMAIL || 'snenhlanhlamagubane@gmail.com';
   const phone = import.meta.env.VITE_PHONE || '';
   const location = import.meta.env.VITE_LOCATION || '';
@@ -26,10 +35,12 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to a backend or email service
-    setStatus('Thank you for your message! I will get back to you soon.');
+    const { name, subject, message } = formData;
+    const mailtoLink = `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\n\nMessage: ${message}`)}`;
+    window.location.href = mailtoLink;
+    setShowSnackbar(true);
     setFormData({ name: '', email: '', subject: '', message: '' });
-    setTimeout(() => setStatus(''), 5000);
+    setTimeout(() => setShowSnackbar(false), 5000);
   };
 
   return (
@@ -39,14 +50,14 @@ const Contact: React.FC = () => {
       </div>
       <div className="dashboard-card">
         <h3>Contact Information</h3>
-        {email && <p>Email: <a href={`mailto:${email}`}>{email}</a></p>}
-        {phone && <p>Phone: <a href={`tel:${phone}`}>{phone}</a></p>}
+        {email && <p className="contact-link">Email: <a href={`mailto:${email}`}>{email}</a></p>}
+        {phone && <p className="contact-link">Phone: <a href={`tel:${phone}`}>{phone}</a></p>}
         {location && <p>Location: {location}</p>}
       </div>
       <div className="dashboard-card">
         <h3>Connect With Me</h3>
-        {github && <p><a href={github} target="_blank" rel="noopener noreferrer">GitHub</a></p>}
-        {linkedin && <p><a href={linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></p>}
+        {github && <p className="contact-link"><a href={github} target="_blank" rel="noopener noreferrer">GitHub</a></p>}
+        {linkedin && <p className="contact-link"><a href={linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></p>}
       </div>
       <div className="dashboard-card">
         <h3>Send a Message</h3>
@@ -107,10 +118,9 @@ const Contact: React.FC = () => {
           </div>
 
           <button type="submit" className="btn">Send Message</button>
-
-          {status && <p style={{ marginTop: '1rem', textAlign: 'center', color: 'green' }}>{status}</p>}
         </form>
       </div>
+      <Snackbar message="Your message has been sent!" show={showSnackbar} />
     </div>
   );
 };
