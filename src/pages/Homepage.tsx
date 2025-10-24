@@ -31,7 +31,7 @@ const Homepage: React.FC = () => {
           <div className="skill-category">
             <h4>Frontend</h4>
             <div className="tech-tags">
-              {frontendSkills.slice(0, 4).map((skill, index) => (
+              {frontendSkills.slice(0, 4).map((skill: string, index: number) => (
                 <span key={index} className="tech-tag">{skill}</span>
               ))}
             </div>
@@ -39,7 +39,7 @@ const Homepage: React.FC = () => {
           <div className="skill-category">
             <h4>Backend</h4>
             <div className="tech-tags">
-              {backendSkills.slice(0, 4).map((skill, index) => (
+              {backendSkills.slice(0, 4).map((skill: string, index: number) => (
                 <span key={index} className="tech-tag">{skill}</span>
               ))}
             </div>
