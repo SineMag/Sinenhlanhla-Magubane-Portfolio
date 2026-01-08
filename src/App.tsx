@@ -24,6 +24,7 @@ function App() {
           <Route path="*" element={<Error404Page />} />
         </Routes>
       </main>
+      <div className="watermark">SineMag</div>
       <Footer />
     </div>
   )
