@@ -923,6 +923,229 @@ main {
   }
 }
 
+/* Comprehensive Responsive Design */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+
+  .nav-content {
+    padding: 0 15px;
+  }
+
+  .dashboard-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .featured-projects {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .certificates-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    padding: 0.75rem 0;
+  }
+
+  .nav-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero h2 {
+    font-size: 1.2rem;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+  }
+
+  .dashboard-card {
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .featured-projects {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    padding: 1.25rem;
+  }
+
+  .certificates-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .certificate-image {
+    height: 100px;
+  }
+
+  .certificate-name {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-images {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .hero-laptop {
+    max-width: 300px;
+  }
+
+  .hero-mobile {
+    max-width: 150px;
+  }
+
+  .tech-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.4rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .dashboard-card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .dashboard-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .tech-tags {
+    gap: 0.5rem;
+  }
+
+  .tech-tag {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+  }
+
+  .experience-card {
+    padding: 1rem;
+  }
+
+  .education-item {
+    padding: 0.75rem 0;
+  }
+
+  .certificates-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .certificate-image {
+    height: 80px;
+  }
+
+  .certificate-name {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  .nav-content {
+    padding: 0 10px;
+  }
+
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .hero h2 {
+    font-size: 1.1rem;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+  }
+
+  .dashboard-card {
+    padding: 0.75rem;
+  }
+
+  .dashboard-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .tech-tag {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .hero-laptop {
+    max-width: 250px;
+  }
+
+  .hero-mobile {
+    max-width: 120px;
+  }
+
+  .certificates-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .certificate-image {
+    height: 70px;
+  }
+
+  .certificate-name {
+    font-size: 0.65rem;
+  }
+}
+
 /* Print Styles for CV */
 @media print {
   /* Hide navigation, footer, and download button when printing */
