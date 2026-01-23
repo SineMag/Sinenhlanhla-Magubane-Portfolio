@@ -5,6 +5,7 @@ export interface Project {
   link?: string;
   github?: string;
   status: "live" | "development";
+  image?: string;
 }
 
 export const projects: Project[] = [
@@ -47,6 +48,7 @@ export const projects: Project[] = [
     tech: ["React", "TypeScript", "Node.js", "MongoDB"],
     link: "https://eatery-h2x2.onrender.com",
     status: "live",
+    image: "../assets/Eatery Logo.png",
   },
   {
     name: "Booknest",
@@ -126,6 +128,13 @@ export const projects: Project[] = [
       "Music playlist management application for creating, organizing, and playing your favorite music collections.",
     tech: ["React", "TypeScript", "Audio API", "CSS"],
     github: "https://github.com/SineMag",
+    status: "development",
+  },
+  {
+    name: "Listify",
+    description:
+      "A shopping list app built with React Native, providing intuitive list management for everyday shopping needs with offline capabilities.",
+    tech: ["React Native", "TypeScript", "LocalStorage", "Mobile UI"],
     status: "development",
   },
 ];

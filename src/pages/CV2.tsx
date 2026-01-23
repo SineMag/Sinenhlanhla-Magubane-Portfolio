@@ -91,6 +91,17 @@ const CV2: React.FC = () => {
         ...(import.meta.env.VITE_TOOLS_SKILLS || "").split(",").filter(Boolean),
         "Sage Pastel Accounting",
         "Microsoft Office Suite",
+        "QuickBooks",
+      ],
+    },
+    {
+      category: "Professional Skills",
+      skills: [
+        "Problem Solving",
+        "Leadership",
+        "Communication",
+        "Customer Service",
+        "Office Management",
       ],
     },
   ];
