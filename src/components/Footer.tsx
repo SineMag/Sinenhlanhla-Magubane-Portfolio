@@ -1,7 +1,6 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
-import { HiMail, HiExternalLink } from "react-icons/hi";
+import { HiMail } from "react-icons/hi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Footer: React.FC = () => {
@@ -25,29 +24,52 @@ const Footer: React.FC = () => {
         <div className="footer-section">
           <h4>{name}</h4>
           <p>Full Stack Developer</p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginTop: '1rem', alignItems: 'center' }}>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "1rem",
+              marginTop: "1rem",
+              alignItems: "center",
+            }}
+          >
             {email && (
-              <a href={`mailto:${email}`} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <a
+                href={`mailto:${email}`}
+                style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
+              >
                 <HiMail />
                 <span>{email}</span>
               </a>
             )}
-          {github && (
-              <a href={github} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <FaGithub />
+            {github && (
+              <a
+                href={github}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
+              >
+                <FaGithub />
                 <span>GitHub</span>
-                <HiExternalLink style={{ fontSize: '0.875rem' }} />
               </a>
             )}
             {linkedin && (
-              <a href={linkedin} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <FaLinkedin />
-              <span>LinkedIn</span>
-                <HiExternalLink style={{ fontSize: '0.875rem' }} />
+              <a
+                href={linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
+              >
+                <FaLinkedin />
+                <span>LinkedIn</span>
               </a>
             )}
             {quickLinks.map((link) => (
-              <Link key={link.path} to={link.path} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Link
+                key={link.path}
+                to={link.path}
+                style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
+              >
                 {link.name}
               </Link>
             ))}
@@ -55,7 +77,9 @@ const Footer: React.FC = () => {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>© {currentYear} {name}</p>
+        <p>
+          © {currentYear} {name}
+        </p>
         <Link to="/privacy">Privacy Policy</Link>
       </div>
     </footer>
@@ -63,4 +87,3 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
-

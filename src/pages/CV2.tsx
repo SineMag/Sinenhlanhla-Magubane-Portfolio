@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   HiCode,
   HiBriefcase,
@@ -6,18 +6,18 @@ import {
   HiMail,
   HiPhone,
   HiLocationMarker,
-  HiExternalLink,
   HiDownload,
 } from "react-icons/hi";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import cvFile from "../assets/SineMagubaneCV.pdf";
-import cert1 from "../assets/certs/Screenshot 2026-01-13 131239.png";
-import cert2 from "../assets/certs/Screenshot 2026-01-13 131250.png";
-import cert3 from "../assets/certs/Screenshot 2026-01-13 131325.png";
-import cert4 from "../assets/certs/Screenshot 2026-01-13 131337.png";
-import cert5 from "../assets/certs/Screenshot 2026-01-13 131351.png";
-import cert6 from "../assets/certs/Screenshot 2026-01-13 131403.png";
-import cert7 from "../assets/certs/Screenshot 2026-01-13 131411.png";
+import cert1 from "../assets/certs/Python for Beginners.png";
+import cert2 from "../assets/certs/Database Design.png";
+import cert3 from "../assets/certs/JavaScript.png";
+import cert4 from "../assets/certs/Machine Learning.png";
+import cert5 from "../assets/certs/Understanding AI.png";
+import cert6 from "../assets/certs/Understanding Data Engineering.png";
+import cert7 from "../assets/certs/SATMO.png";
+import cert8 from "../assets/certs/Hackathon.png";
 
 interface Experience {
   title: string;
@@ -38,6 +38,11 @@ interface SkillCategory {
 }
 
 const CV2: React.FC = () => {
+  const [selectedCertificate, setSelectedCertificate] = useState<{
+    name: string;
+    image: string;
+  } | null>(null);
+
   const name = import.meta.env.VITE_NAME || "Sinenhlanhla Magubane";
   const title = import.meta.env.VITE_TITLE || "Full Stack Developer";
   const email = import.meta.env.VITE_EMAIL || "";
@@ -145,16 +150,14 @@ const CV2: React.FC = () => {
   };
 
   const certificates = [
-    { name: "Data Science with Python", image: cert1 },
-    { name: "DataBase Design", image: cert2 },
-    { name: "Introduction to JavaScript", image: cert3 },
+    { name: "Python for Beginners", image: cert1 },
+    { name: "Database Design", image: cert2 },
+    { name: "JavaScript", image: cert3 },
     { name: "Machine Learning", image: cert4 },
-    { name: "Python Programming", image: cert5 },
-    { name: "Understanding Artificial Intelligence", image: cert6 },
-    { name: "Understanding Data Engineering", image: cert7 },
-    { name: "Hackathon | Geekulcha", image: cert7 },
-    { name: "Responsive Web Design", image: cert7 },
-    { name: "JavaScript Algorithms and Data Structures", image: cert7 },
+    { name: "Understanding AI", image: cert5 },
+    { name: "Understanding Data Engineering", image: cert6 },
+    { name: "South African Tertiary Mathematics SATMO", image: cert7 },
+    { name: "Hackathon Certificate", image: cert8 },
   ];
 
   return (
@@ -206,7 +209,6 @@ const CV2: React.FC = () => {
                 style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
               >
                 <FaLinkedin /> LinkedIn{" "}
-                <HiExternalLink style={{ fontSize: "0.75rem" }} />
               </a>
             )}
             {github && (
@@ -218,7 +220,6 @@ const CV2: React.FC = () => {
                 style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
               >
                 <FaGithub /> GitHub{" "}
-                <HiExternalLink style={{ fontSize: "0.75rem" }} />
               </a>
             )}
             <a
@@ -312,7 +313,11 @@ const CV2: React.FC = () => {
           <h3>Certificates</h3>
           <div className="certificates-grid">
             {certificates.map((cert, index) => (
-              <div key={index} className="certificate-item">
+              <div
+                key={index}
+                className="certificate-item certificate-clickable"
+                onClick={() => setSelectedCertificate(cert)}
+              >
                 <img
                   src={cert.image}
                   alt={cert.name}
@@ -410,6 +415,36 @@ const CV2: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Certificate Modal */}
+      {selectedCertificate && (
+        <div
+          className="certificate-modal"
+          onClick={() => setSelectedCertificate(null)}
+        >
+          <div
+            className="certificate-modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="certificate-modal-header">
+              <h3>{selectedCertificate.name}</h3>
+              <button
+                className="certificate-modal-close"
+                onClick={() => setSelectedCertificate(null)}
+              >
+                ×
+              </button>
+            </div>
+            <div className="certificate-modal-body">
+              <img
+                src={selectedCertificate.image}
+                alt={selectedCertificate.name}
+                className="certificate-modal-image"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

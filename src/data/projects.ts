@@ -9,14 +9,6 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    name: "Library API",
-    description:
-      "RESTful API for managing library resources, books, and user interactions with comprehensive CRUD operations.",
-    tech: ["Node.js", "Express", "MongoDB", "REST API"],
-    link: "https://library-api-rrea.onrender.com",
-    status: "live",
-  },
-  {
     name: "CookBook",
     description:
       "Recipe management application for storing, organizing, and discovering culinary creations. Currently in active development.",
@@ -30,14 +22,6 @@ export const projects: Project[] = [
       "Interactive shopping list application with real-time updates and persistent storage for managing your shopping needs.",
     tech: ["React", "TypeScript", "LocalStorage", "CSS"],
     link: "https://shopping-list-8nso.onrender.com",
-    status: "live",
-  },
-  {
-    name: "Audio Recorder",
-    description:
-      "Web-based audio recording application with playback functionality and download capabilities.",
-    tech: ["JavaScript", "Web Audio API", "HTML5", "CSS"],
-    github: "https://github.com/SineMag",
     status: "live",
   },
   {
@@ -57,11 +41,11 @@ export const projects: Project[] = [
     status: "live",
   },
   {
-    name: "Converter CLI",
+    name: "Eatery",
     description:
-      "Command-line utility for various unit conversions including currency, temperature, and measurement conversions.",
-    tech: ["Python", "CLI", "Argparse"],
-    github: "https://github.com/SineMag",
+      "Restaurant discovery and reservation platform with menu browsing, reviews, and seamless booking experience.",
+    tech: ["React", "TypeScript", "Node.js", "MongoDB"],
+    link: "https://eatery-h2x2.onrender.com",
     status: "live",
   },
   {

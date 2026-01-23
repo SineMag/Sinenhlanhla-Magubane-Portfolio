@@ -1,15 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
-import {
-  HiCode,
-  HiFolder,
-  HiExternalLink,
-  HiGlobeAlt,
-  HiDeviceMobile,
-} from "react-icons/hi";
+import { HiCode, HiFolder, HiDeviceMobile, HiClock } from "react-icons/hi";
 import laptop from "../assets/laptop.png";
 import mobile from "../assets/mobile.png";
+import travel from "../assets/travel.jpg";
+import "../styles/Banner.css";
 
 const Homepage: React.FC = () => {
   const name = import.meta.env.VITE_NAME || "Sinenhlanhla Magubane";
@@ -38,7 +34,6 @@ const Homepage: React.FC = () => {
             <Link to="/project" className="btn">
               <HiFolder />
               <span>View My Work</span>
-              <HiExternalLink />
             </Link>
             <Link to="/contact" className="btn btn-outline">
               Get In Touch
@@ -62,12 +57,34 @@ const Homepage: React.FC = () => {
         </div>
       </div>
 
+      {/* Global Opportunities Banner */}
+      <div className="global-opportunities-banner">
+        <div className="banner-content">
+          <img
+            src={travel}
+            alt="Global Opportunities"
+            className="banner-image"
+          />
+          <div className="banner-text">
+            <h3>Open to opportunities around the globe</h3>
+            <p>Available for remote work and international collaborations</p>
+          </div>
+        </div>
+      </div>
+
       {/* Featured Projects Section */}
       <div className="dashboard-card">
         <h3 className="section-title">Featured Live Projects</h3>
         <div className="projects-grid">
           {liveProjects.map((project, index) => (
-            <div key={index} className="project-card-simple">
+            <div
+              key={index}
+              className={`project-card-simple ${project.link ? "project-card-clickable" : ""}`}
+              onClick={() =>
+                project.link &&
+                window.open(project.link, "_blank", "noopener,noreferrer")
+              }
+            >
               <div className="project-header">
                 <h4 className="project-name">{project.name}</h4>
                 <span className="project-status live">
@@ -83,20 +100,12 @@ const Homepage: React.FC = () => {
                 ))}
               </div>
 
-              <div className="project-actions">
-                {project.link && (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-link"
-                    title="Visit live site"
-                  >
-                    <HiGlobeAlt />
-                    <HiExternalLink />
-                  </a>
-                )}
-              </div>
+              {!project.link && (
+                <div className="project-placeholder">
+                  <HiClock className="placeholder-icon" />
+                  <span className="placeholder-text">Still cooking</span>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -105,7 +114,6 @@ const Homepage: React.FC = () => {
           <Link to="/project" className="btn">
             <HiFolder />
             <span>View All Projects</span>
-            <HiExternalLink />
           </Link>
         </div>
       </div>
@@ -118,6 +126,7 @@ const Homepage: React.FC = () => {
             <h4>Frontend</h4>
             <div className="tech-tags">
               <span className="tech-tag">React</span>
+              <span className="tech-tag">React Native</span>
               <span className="tech-tag">TypeScript</span>
               <span className="tech-tag">HTML5</span>
               <span className="tech-tag">CSS3</span>
