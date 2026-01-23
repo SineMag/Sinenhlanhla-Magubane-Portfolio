@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import {
   HiMail,
@@ -28,8 +28,6 @@ const Contact: React.FC = () => {
   const email = import.meta.env.VITE_EMAIL || "snenhlanhlamagubane@gmail.com";
   const phone = import.meta.env.VITE_PHONE || "";
   const location = import.meta.env.VITE_LOCATION || "";
-  const linkedin = import.meta.env.VITE_LINKEDIN || "";
-  const github = import.meta.env.VITE_GITHUB || "";
 
   return (
     <div className="dashboard-container">
