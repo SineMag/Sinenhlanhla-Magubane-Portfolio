@@ -1,6 +1,6 @@
 import React from "react";
 import { projects } from "../data/projects";
-import { HiGlobeAlt, HiCode, HiExternalLink } from "react-icons/hi";
+import { HiCode, HiClock } from "react-icons/hi";
 
 const Project: React.FC = () => {
   const githubUrl = import.meta.env.VITE_GITHUB || "https://github.com/SineMag";
@@ -23,7 +23,14 @@ const Project: React.FC = () => {
       </div>
       <div className="projects-grid">
         {projects.map((project, index) => (
-          <div key={index} className="dashboard-card">
+          <div
+            key={index}
+            className={`dashboard-card ${project.link ? "project-card-clickable" : ""}`}
+            onClick={() =>
+              project.link &&
+              window.open(project.link, "_blank", "noopener,noreferrer")
+            }
+          >
             <div
               style={{
                 display: "flex",
@@ -44,13 +51,8 @@ const Project: React.FC = () => {
                 {project.name}
               </h3>
               <span className={`project-status ${project.status}`}>
-                {project.status === "live" ? (
+                {project.status === "live" && (
                   <span className="live-dot"></span>
-                ) : (
-                  <>
-                    <HiCode style={{ fontSize: "0.875rem" }} />
-                    <span>DEV</span>
-                  </>
                 )}
               </span>
             </div>
@@ -70,66 +72,12 @@ const Project: React.FC = () => {
                 </span>
               ))}
             </div>
-            <div
-              style={{
-                display: "flex",
-                gap: "1rem",
-                flexWrap: "wrap",
-                alignItems: "center",
-              }}
-            >
-              {project.link && (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-link"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                  }}
-                  title="Visit live site"
-                >
-                  <HiGlobeAlt />
-                  <HiExternalLink style={{ fontSize: "0.875rem" }} />
-                </a>
-              )}
-              {project.github && (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-link"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                  }}
-                >
-                  <HiCode />
-                  <span>GitHub</span>
-                  <HiExternalLink style={{ fontSize: "0.875rem" }} />
-                </a>
-              )}
-              {!project.link && !project.github && (
-                <a
-                  href={githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-link"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                  }}
-                >
-                  <HiCode />
-                  <span>View on GitHub</span>
-                  <HiExternalLink style={{ fontSize: "0.875rem" }} />
-                </a>
-              )}
-            </div>
+            {!project.link && (
+              <div className="project-placeholder">
+                <HiClock className="placeholder-icon" />
+                <span className="placeholder-text">Still cooking</span>
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -147,7 +95,6 @@ const Project: React.FC = () => {
         >
           <HiCode />
           <span>View All on GitHub</span>
-          <HiExternalLink />
         </a>
       </div>
     </div>

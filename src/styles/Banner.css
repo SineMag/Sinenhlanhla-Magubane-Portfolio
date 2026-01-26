@@ -1,0 +1,42 @@
+/* Responsive styling for Global Opportunities Banner */
+@media (max-width: 640px) {
+  .banner-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .banner-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .banner-text h3 {
+    font-size: 1.3rem;
+  }
+
+  .banner-text p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-content {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .banner-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .banner-text h3 {
+    font-size: 1.1rem;
+  }
+
+  .banner-text p {
+    font-size: 0.8rem;
+  }
+}
