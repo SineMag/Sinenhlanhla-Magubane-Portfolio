@@ -73,7 +73,7 @@ const Homepage: React.FC = () => {
       </div>
 
       {/* Featured Projects Section */}
-      <div className="dashboard-card">
+      <div>
         <h3 className="section-title">Featured Live Projects</h3>
         <div className="projects-grid">
           {liveProjects.map((project, index) => (
