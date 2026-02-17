@@ -1,9 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { projects } from "../data/projects";
 import { HiCode, HiClock } from "react-icons/hi";
+import type { Project as ProjectType } from "../data/projects";
 
 const Project: React.FC = () => {
   const githubUrl = import.meta.env.VITE_GITHUB || "https://github.com/SineMag";
+  const [cookingProject, setCookingProject] = useState<ProjectType | null>(null);
+
+  const handleCardClick = (project: ProjectType) => {
+    if (project.link) {
+      window.open(project.link, "_blank", "noopener,noreferrer");
+      return;
+    }
+    setCookingProject(project);
+  };
+
+  useEffect(() => {
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setCookingProject(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, []);
 
   return (
     <div className="dashboard-container">
@@ -25,11 +46,8 @@ const Project: React.FC = () => {
         {projects.map((project, index) => (
           <div
             key={index}
-            className={`dashboard-card ${project.link ? "project-card-clickable" : ""}`}
-            onClick={() =>
-              project.link &&
-              window.open(project.link, "_blank", "noopener,noreferrer")
-            }
+            className={`dashboard-card project-card-clickable ${!project.link ? "project-card-cooking" : ""}`}
+            onClick={() => handleCardClick(project)}
           >
             <div
               style={{
@@ -97,6 +115,38 @@ const Project: React.FC = () => {
           <span>View All on GitHub</span>
         </a>
       </div>
+
+      {cookingProject && (
+        <div
+          className="cooking-modal-overlay"
+          onClick={() => setCookingProject(null)}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              setCookingProject(null);
+            }
+          }}
+        >
+          <div
+            className="cooking-modal"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              className="cooking-modal-close"
+              onClick={() => setCookingProject(null)}
+              aria-label="Close modal"
+            >
+              x
+            </button>
+            <div className="cooking-gif-like" aria-hidden="true">
+              <HiClock />
+            </div>
+            <h3>{cookingProject.name}</h3>
+            <p>This project is still cooking. Check back soon for a live demo.</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

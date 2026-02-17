@@ -27,17 +27,19 @@ body {
 
 .dashboard-card {
   background: #ffffff;
-  border: 1px solid #000000;
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
   margin-bottom: 1.5rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .dashboard-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  border-color: #333333;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+}
+
+.project-card-clickable {
+  cursor: pointer;
 }
 
 .dashboard-card h3 {
@@ -100,4 +102,80 @@ body {
   outline: none;
   border-color: #333333;
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.cooking-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 1000;
+}
+
+.cooking-modal {
+  position: relative;
+  width: min(520px, 100%);
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem 1.5rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+}
+
+.cooking-modal h3 {
+  margin: 0 0 0.75rem;
+  color: #000000;
+}
+
+.cooking-modal p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.cooking-modal-close {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #000000;
+  background: #ffffff;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.cooking-gif-like {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  border: 2px solid #000000;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  animation: cooking-spin 1.6s linear infinite,
+    cooking-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes cooking-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cooking-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(0, 0, 0, 0.06);
+  }
 }

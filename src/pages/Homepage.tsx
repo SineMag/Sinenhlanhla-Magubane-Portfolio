@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
+import type { Project as ProjectType } from "../data/projects";
 import { HiCode, HiFolder, HiDeviceMobile, HiClock } from "react-icons/hi";
 import laptop from "../assets/laptop.png";
 import mobile from "../assets/mobile.png";
 import travel from "../assets/travel.jpg";
+import dataAnalytics from "../assets/Data Analytics.png";
 import "../styles/Banner.css";
 
 const Homepage: React.FC = () => {
@@ -13,6 +15,27 @@ const Homepage: React.FC = () => {
   const bio =
     import.meta.env.VITE_BIO ||
     "Passionate developer building amazing web experiences";
+
+  const [cookingProject, setCookingProject] = useState<ProjectType | null>(null);
+
+  const handleProjectClick = (project: ProjectType) => {
+    if (project.link) {
+      window.open(project.link, "_blank", "noopener,noreferrer");
+      return;
+    }
+    setCookingProject(project);
+  };
+
+  useEffect(() => {
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setCookingProject(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, []);
 
   // Get only live projects for showcase
   const liveProjects = projects
@@ -29,6 +52,10 @@ const Homepage: React.FC = () => {
           <p className="hero-description">
             {bio ||
               "Data & Tech Enthusiast 👩‍💻 Full-Stack Trainee | Building Projects from Scratch | Giving Life to Ideas"}
+          </p>
+          <p className="hero-description">
+            Mentor and part-time high school tutor in Mathematics, Physical
+            Science, and Life Science.
           </p>
           <div className="hero-buttons">
             <Link to="/project" className="btn">
@@ -72,6 +99,23 @@ const Homepage: React.FC = () => {
         </div>
       </div>
 
+      <div className="analytics-spotlight">
+        <div className="analytics-content">
+          <h3>Data Analytics</h3>
+          <p>
+            I turn raw data into actionable insights with clean dashboards,
+            trend analysis, and decision-focused reporting.
+          </p>
+        </div>
+        <div className="analytics-image-wrap">
+          <img
+            src={dataAnalytics}
+            alt="Data analytics dashboard"
+            className="analytics-image"
+          />
+        </div>
+      </div>
+
       {/* Featured Projects Section */}
       <div>
         <h3 className="section-title">Featured Live Projects</h3>
@@ -79,11 +123,8 @@ const Homepage: React.FC = () => {
           {liveProjects.map((project, index) => (
             <div
               key={index}
-              className={`project-card-simple ${project.link ? "project-card-clickable" : ""}`}
-              onClick={() =>
-                project.link &&
-                window.open(project.link, "_blank", "noopener,noreferrer")
-              }
+              className="project-card-simple project-card-clickable"
+              onClick={() => handleProjectClick(project)}
             >
               <div className="project-header">
                 <h4 className="project-name">{project.name}</h4>
@@ -116,6 +157,38 @@ const Homepage: React.FC = () => {
             <span>View All Projects</span>
           </Link>
         </div>
+
+        {cookingProject && (
+          <div
+            className="cooking-modal-overlay"
+            onClick={() => setCookingProject(null)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                setCookingProject(null);
+              }
+            }}
+          >
+            <div
+              className="cooking-modal"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <button
+                className="cooking-modal-close"
+                onClick={() => setCookingProject(null)}
+                aria-label="Close modal"
+              >
+                x
+              </button>
+              <div className="cooking-gif-like" aria-hidden="true">
+                <HiClock />
+              </div>
+              <h3>{cookingProject.name}</h3>
+              <p>This project is still cooking. Check back soon for a live demo.</p>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Skills Section */}
