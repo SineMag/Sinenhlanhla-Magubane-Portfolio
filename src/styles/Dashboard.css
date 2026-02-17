@@ -179,3 +179,34 @@ body {
     box-shadow: 0 0 0 14px rgba(0, 0, 0, 0.06);
   }
 }
+
+@media (max-width: 640px) {
+  .dashboard-container {
+    padding: 1.25rem;
+  }
+
+  .cooking-modal {
+    padding: 1.5rem 1rem 1rem;
+    border-radius: 12px;
+  }
+
+  .cooking-gif-like {
+    width: 72px;
+    height: 72px;
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: 1rem;
+  }
+
+  .cooking-modal h3 {
+    font-size: 1.15rem;
+  }
+
+  .cooking-modal p {
+    font-size: 0.92rem;
+  }
+}

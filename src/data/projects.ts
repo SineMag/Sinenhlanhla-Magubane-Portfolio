@@ -102,7 +102,7 @@ export const projects: Project[] = [
     name: "AI Object Recognition",
     description:
       "Advanced AI-powered object recognition system with hand gesture analysis and real-time image processing capabilities.",
-    tech: ["React", "AI/ML", "Computer Vision", "TypeScript"],
+    tech: ["React", "Python", "AI/ML", "Computer Vision"],
     link: "https://ai-object-recognition.onrender.com",
     status: "live",
   },

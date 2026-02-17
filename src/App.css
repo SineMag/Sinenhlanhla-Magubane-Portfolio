@@ -454,42 +454,6 @@
     justify-content: center;
     gap: 2rem;
   }
-
-  .analytics-spotlight {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-}
-
-@media (max-width: 640px) {
-  .hero-images {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .hero-laptop {
-    max-width: 300px;
-  }
-
-  .hero-mobile {
-    max-width: 150px;
-  }
-
-  .tech-showcase {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-title {
-    font-size: 2.5rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1.4rem;
-  }
-
-  .hero-description {
-    font-size: 1rem;
-  }
 }
 
 /* Basic Reset */
@@ -1812,6 +1776,20 @@ main {
     font-size: 2rem !important;
   }
 
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+
+  .project-card-simple {
+    padding: 1.1rem;
+  }
+
+  .hero-description {
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+
   .watermark {
     font-size: 0.6rem;
     bottom: 10px;
@@ -1853,6 +1831,17 @@ main {
   .skills-grid {
     grid-template-columns: 1fr;
   }
+
+  .analytics-spotlight {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    text-align: center;
+    padding: 1.25rem;
+  }
+
+  .analytics-image {
+    max-width: 360px;
+  }
 }
 @media (max-width: 640px) {
   .hero-images {
@@ -1882,6 +1871,18 @@ main {
 
   .hero-description {
     font-size: 1rem;
+  }
+
+  .analytics-content h3 {
+    font-size: 1.4rem;
+  }
+
+  .analytics-content p {
+    font-size: 0.95rem;
+  }
+
+  .analytics-image {
+    max-width: 100%;
   }
 
   .dashboard-card {
@@ -1943,6 +1944,19 @@ main {
 
   .hero-description {
     font-size: 0.9rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-buttons {
+    width: 100%;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    justify-content: center;
   }
 
   .dashboard-card {
