@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { projects } from '../data/projects';
 import { HiCode, HiFolder, HiExternalLink } from 'react-icons/hi';
+import ProjectIcon from "../components/ProjectIcon";
 
 const Homepage: React.FC = () => {
   const name = import.meta.env.VITE_NAME || 'Sinenhlanhla Magubane';
@@ -24,7 +25,7 @@ const Homepage: React.FC = () => {
           fontSize: '3rem',
           marginBottom: '0.5rem'
         }}>
-          {name}
+          Hi there, I'm {name}.
         </h1>
         <h2 style={{ fontSize: '1.5rem', color: '#8b6f5e', fontWeight: '400' }}>{title}</h2>
       </div>
@@ -80,7 +81,10 @@ const Homepage: React.FC = () => {
                     </>
                   )}
                 </span>
-                <h3>{project.name}</h3>
+                <h3 style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                  <ProjectIcon iconKey={project.iconKey} />
+                  <span>{project.name}</span>
+                </h3>
                 <p>{project.description}</p>
                 <div className="tech-tags" style={{ marginTop: '1rem' }}>
                   {project.tech.slice(0, 3).map((tech, techIndex) => (

@@ -9,6 +9,7 @@ import CV from './pages/CV2';
 import Project from './pages/Project'
 import Privacy from './pages/Privacy'
 import Error404Page from './pages/Error404Page'
+import DataAnalytics from './pages/DataAnalytics'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/cv" element={<CV />} />
           <Route path="/project" element={<Project />} />
+          <Route path="/data-analytics" element={<DataAnalytics />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="*" element={<Error404Page />} />
         </Routes>

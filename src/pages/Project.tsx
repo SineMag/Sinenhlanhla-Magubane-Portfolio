@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { projects } from "../data/projects";
 import { HiCode, HiClock } from "react-icons/hi";
 import type { Project as ProjectType } from "../data/projects";
+import ProjectIcon from "../components/ProjectIcon";
 
 const Project: React.FC = () => {
   const githubUrl = import.meta.env.VITE_GITHUB || "https://github.com/SineMag";
@@ -64,9 +65,13 @@ const Project: React.FC = () => {
                   margin: 0,
                   flex: 1,
                   minWidth: 0,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.6rem",
                 }}
               >
-                {project.name}
+                <ProjectIcon iconKey={project.iconKey} />
+                <span>{project.name}</span>
               </h3>
               <span className={`project-status ${project.status}`}>
                 {project.status === "live" && (

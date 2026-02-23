@@ -6,6 +6,7 @@ export interface Project {
   github?: string;
   status: "live" | "development";
   image?: string;
+  iconKey: string;
 }
 
 export const projects: Project[] = [
@@ -16,14 +17,7 @@ export const projects: Project[] = [
     tech: ["React", "TypeScript", "Node.js", "MongoDB"],
     github: "https://github.com/SineMag",
     status: "development",
-  },
-  {
-    name: "Shopping List",
-    description:
-      "Interactive shopping list application with real-time updates and persistent storage for managing your shopping needs.",
-    tech: ["React", "TypeScript", "LocalStorage", "CSS"],
-    link: "https://shopping-list-8nso.onrender.com",
-    status: "live",
+    iconKey: "cookbook",
   },
   {
     name: "PenPad",
@@ -32,6 +26,7 @@ export const projects: Project[] = [
     tech: ["React", "TypeScript", "LocalStorage", "CSS"],
     link: "https://penpad.onrender.com",
     status: "live",
+    iconKey: "penpad",
   },
   {
     name: "Q - Healthcare App",
@@ -40,23 +35,17 @@ export const projects: Project[] = [
     tech: ["React", "TypeScript", "Node.js", "Healthcare APIs"],
     link: "https://qfrontend-u1k9.onrender.com",
     status: "live",
+    iconKey: "healthcare",
   },
   {
     name: "Eatery",
     description:
       "Restaurant discovery and reservation platform with menu browsing, reviews, and seamless booking experience.",
-    tech: ["React", "TypeScript", "Node.js", "MongoDB"],
+    tech: ["React", "TypeScript", "Supabase", "PostgreSQL"],
     link: "https://eatery-h2x2.onrender.com",
     status: "live",
     image: "../assets/Eatery Logo.png",
-  },
-  {
-    name: "Booknest",
-    description:
-      "Hotel management system for booking, reservations, and guest management. Streamlining hospitality operations.",
-    tech: ["React", "Node.js", "MongoDB", "Express"],
-    link: "https://booknest-j3la.onrender.com",
-    status: "development",
+    iconKey: "eatery",
   },
   {
     name: "Links Vault",
@@ -65,14 +54,7 @@ export const projects: Project[] = [
     tech: ["React", "TypeScript", "LocalStorage"],
     github: "https://github.com/SineMag",
     status: "live",
-  },
-  {
-    name: "NovaMobile",
-    description:
-      "AI-powered chatbot with text-to-image generation capabilities, combining conversational AI with creative image synthesis.",
-    tech: ["React", "AI APIs", "Image Generation", "TypeScript"],
-    github: "https://github.com/SineMag",
-    status: "live",
+    iconKey: "vault",
   },
   {
     name: "Hotel Management System",
@@ -81,6 +63,7 @@ export const projects: Project[] = [
     tech: ["React", "Node.js", "MongoDB", "Express"],
     link: "https://hotel-management-system-project.onrender.com",
     status: "live",
+    iconKey: "hotel",
   },
   {
     name: "Job Application Tracker",
@@ -89,6 +72,16 @@ export const projects: Project[] = [
     tech: ["React", "Node.js", "MongoDB", "Express"],
     link: "https://job-application-tracker-azfu.onrender.com",
     status: "live",
+    iconKey: "job",
+  },
+  {
+    name: "BMI Calculator",
+    description:
+      "Body Mass Index calculator with a C++ backend service and clean web frontend for quick health checks.",
+    tech: ["React", "TypeScript", "C++", "REST API"],
+    link: "https://bmi-calculator-alba.onrender.com",
+    status: "live",
+    iconKey: "bmi",
   },
   {
     name: "Library",
@@ -97,6 +90,7 @@ export const projects: Project[] = [
     tech: ["React", "TypeScript", "CSS", "API Integration"],
     github: "https://github.com/SineMag",
     status: "live",
+    iconKey: "library",
   },
   {
     name: "AI Object Recognition",
@@ -105,6 +99,7 @@ export const projects: Project[] = [
     tech: ["React", "Python", "AI/ML", "Computer Vision"],
     link: "https://ai-object-recognition.onrender.com",
     status: "live",
+    iconKey: "vision",
   },
   {
     name: "Weather & News Dashboard",
@@ -113,6 +108,7 @@ export const projects: Project[] = [
     tech: ["React", "Weather API", "News API", "TypeScript"],
     github: "https://github.com/SineMag",
     status: "live",
+    iconKey: "dashboard",
   },
   {
     name: "Weather",
@@ -121,6 +117,7 @@ export const projects: Project[] = [
     tech: ["JavaScript", "Weather API", "HTML", "CSS"],
     link: "https://weather-application-jgjz.onrender.com",
     status: "live",
+    iconKey: "weather",
   },
   {
     name: "Music Playlist",
@@ -129,12 +126,14 @@ export const projects: Project[] = [
     tech: ["React", "TypeScript", "Audio API", "CSS"],
     github: "https://github.com/SineMag",
     status: "development",
+    iconKey: "music",
   },
   {
     name: "Listify",
     description:
-      "A shopping list app built with React Native, providing intuitive list management for everyday shopping needs with offline capabilities.",
-    tech: ["React Native", "TypeScript", "LocalStorage", "Mobile UI"],
+      "A shopping list app built with React Native and Supabase for synchronized list management with offline-friendly UX.",
+    tech: ["React Native", "TypeScript", "Supabase", "Mobile UI"],
     status: "development",
+    iconKey: "listify",
   },
 ];

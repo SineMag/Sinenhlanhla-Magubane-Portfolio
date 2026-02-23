@@ -7,6 +7,7 @@ import laptop from "../assets/laptop.png";
 import mobile from "../assets/mobile.png";
 import travel from "../assets/travel.jpg";
 import dataAnalytics from "../assets/Data Analytics.png";
+import ProjectIcon from "../components/ProjectIcon";
 import "../styles/Banner.css";
 
 const Homepage: React.FC = () => {
@@ -47,7 +48,7 @@ const Homepage: React.FC = () => {
       {/* Hero Section with Images */}
       <div className="hero-section">
         <div className="hero-content">
-          <h1 className="hero-title">{name}</h1>
+          <h1 className="hero-title">Hi there, I'm {name}.</h1>
           <h2 className="hero-subtitle">{title}</h2>
           <p className="hero-description">
             {bio ||
@@ -127,7 +128,10 @@ const Homepage: React.FC = () => {
               onClick={() => handleProjectClick(project)}
             >
               <div className="project-header">
-                <h4 className="project-name">{project.name}</h4>
+                <h4 className="project-name">
+                  <ProjectIcon iconKey={project.iconKey} />
+                  <span>{project.name}</span>
+                </h4>
                 <span className="project-status live">
                   <span className="live-dot"></span>
                 </span>

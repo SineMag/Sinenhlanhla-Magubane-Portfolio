@@ -13,6 +13,7 @@ const Footer: React.FC = () => {
   const quickLinks = [
     { name: "Home", path: "/" },
     { name: "CV", path: "/cv" },
+    { name: "Analytics", path: "/data-analytics" },
     { name: "Projects", path: "/project" },
     { name: "Contact", path: "/contact" },
     { name: "Privacy", path: "/privacy" },
@@ -24,19 +25,11 @@ const Footer: React.FC = () => {
         <div className="footer-section">
           <h4>{name}</h4>
           <p>Full Stack Developer</p>
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "1rem",
-              marginTop: "1rem",
-              alignItems: "center",
-            }}
-          >
+          <div className="footer-contact-row">
             {email && (
               <a
                 href={`mailto:${email}`}
-                style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
+                className="footer-inline-link"
               >
                 <HiMail />
                 <span>{email}</span>
@@ -47,7 +40,7 @@ const Footer: React.FC = () => {
                 href={github}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
+                className="footer-inline-link"
               >
                 <FaGithub />
                 <span>GitHub</span>
@@ -58,17 +51,19 @@ const Footer: React.FC = () => {
                 href={linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
+                className="footer-inline-link"
               >
                 <FaLinkedin />
                 <span>LinkedIn</span>
               </a>
             )}
+          </div>
+          <div className="footer-menu-row">
             {quickLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
+                className="footer-menu-link"
               >
                 {link.name}
               </Link>
@@ -78,7 +73,7 @@ const Footer: React.FC = () => {
       </div>
       <div className="footer-bottom">
         <p>
-          © {currentYear} {name}
+          &copy; {currentYear} {name}
         </p>
         <Link to="/privacy">Privacy Policy</Link>
       </div>

@@ -5,6 +5,7 @@ import {
   HiDocumentText,
   HiFolder,
   HiMail,
+  HiChartBar,
   HiDotsVertical,
 } from "react-icons/hi";
 
@@ -16,6 +17,7 @@ const Nav: React.FC = () => {
   const navLinks = [
     { name: "Home", path: "/", icon: HiHome },
     { name: "CV", path: "/cv", icon: HiDocumentText },
+    { name: "Analytics", path: "/data-analytics", icon: HiChartBar },
     { name: "Projects", path: "/project", icon: HiFolder },
     { name: "Contact", path: "/contact", icon: HiMail },
   ];
