@@ -2,25 +2,28 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   HiHome,
-  HiDocumentText,
   HiFolder,
   HiMail,
   HiChartBar,
+  HiOfficeBuilding,
+  HiInformationCircle,
   HiDotsVertical,
 } from "react-icons/hi";
+import { companyNavLinks, companyProfile } from "../data/company";
 
 const Nav: React.FC = () => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
 
-  const navLinks = [
-    { name: "Home", path: "/", icon: HiHome },
-    { name: "CV", path: "/cv", icon: HiDocumentText },
-    { name: "Analytics", path: "/data-analytics", icon: HiChartBar },
-    { name: "Projects", path: "/project", icon: HiFolder },
-    { name: "Contact", path: "/contact", icon: HiMail },
-  ];
+  const iconByKey = {
+    home: HiHome,
+    services: HiOfficeBuilding,
+    caseStudies: HiFolder,
+    analytics: HiChartBar,
+    about: HiInformationCircle,
+    contact: HiMail,
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -56,7 +59,7 @@ const Nav: React.FC = () => {
     <nav className="nav" ref={navRef}>
       <div className="nav-content">
         <Link to="/" className="nav-logo signature" onClick={closeMenu}>
-          SineMag
+          {companyProfile.shortName}
         </Link>
 
         {/* Hamburger Menu Button */}
@@ -71,8 +74,8 @@ const Nav: React.FC = () => {
 
         {/* Navigation Links */}
         <ul className={`nav-links ${isMenuOpen ? "nav-open" : ""}`}>
-          {navLinks.map((link) => {
-            const Icon = link.icon;
+          {companyNavLinks.map((link) => {
+            const Icon = iconByKey[link.iconKey];
             const isActive = location.pathname === link.path;
             return (
               <li key={link.path}>

@@ -6,7 +6,6 @@ import {
   HiSparkles,
   HiPresentationChartLine,
 } from "react-icons/hi";
-import uctCertificate from "../assets/UCT.png";
 
 const DataAnalytics: React.FC = () => {
   return (
@@ -36,19 +35,12 @@ const DataAnalytics: React.FC = () => {
         <div className="dashboard-header">
           <div>
             <h1 style={{ color: "#000000", fontSize: "2.5rem" }}>
-              Data Science & Analytics
+              Data & Analytics Solutions
             </h1>
             <p style={{ color: "#000000", marginTop: "1rem" }}>
-              Turning raw data into clear insights, useful dashboards, and
-              decision-ready reports.
+              We transform business data into insights, dashboards, and
+              decision support systems teams can act on quickly.
             </p>
-          </div>
-          <div className="certificate-header-trigger" aria-hidden="true">
-            <img
-              src={uctCertificate}
-              alt="University of Cape Town Data Science short course preview"
-              className="certificate-preview-image"
-            />
           </div>
         </div>
 
@@ -63,6 +55,7 @@ const DataAnalytics: React.FC = () => {
             <span className="tech-tag">Dashboarding</span>
             <span className="tech-tag">Data Storytelling</span>
             <span className="tech-tag">Predictive Modeling</span>
+            <span className="tech-tag">Business Reporting</span>
           </div>
         </div>
 
@@ -99,22 +92,22 @@ const DataAnalytics: React.FC = () => {
             <div className="project-card-simple">
               <h4 style={{ marginBottom: "0.5rem" }}>Insight Dashboards</h4>
               <p>
-                Built interactive reporting views that track trends, KPIs, and
-                business performance over time.
+                Interactive dashboards designed for KPI visibility, trend
+                tracking, and leadership reporting.
               </p>
             </div>
             <div className="project-card-simple">
               <h4 style={{ marginBottom: "0.5rem" }}>Data Preparation</h4>
               <p>
-                Cleaned and transformed datasets to improve reliability before
-                visualization and modeling.
+                Reliable data preparation pipelines to clean, validate, and
+                structure data before analysis.
               </p>
             </div>
             <div className="project-card-simple">
               <h4 style={{ marginBottom: "0.5rem" }}>Modeling Basics</h4>
               <p>
-                Applied machine learning fundamentals for classification,
-                comparison, and practical prediction use cases.
+                Practical predictive workflows for forecasting and category
+                classification use cases.
               </p>
             </div>
           </div>

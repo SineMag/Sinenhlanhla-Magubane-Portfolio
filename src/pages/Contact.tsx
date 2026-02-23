@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import {
   HiMail,
@@ -17,8 +17,7 @@ const Contact: React.FC = () => {
       <div className="success-message-container">
         <div className="success-message-card">
           <p className="success-message">
-            Thanks for your message! I’m grateful you took the time to connect
-            and will respond shortly.
+            Thanks for your message. The SMS team will respond shortly.
           </p>
         </div>
       </div>
@@ -34,8 +33,7 @@ const Contact: React.FC = () => {
       <div className="dashboard-header">
         <h1>Let's Connect</h1>
         <p>
-          Have a project in mind or want to collaborate? I'd love to hear from
-          you!
+          Have a product idea or delivery need? We would love to hear from you.
         </p>
       </div>
 
@@ -94,7 +92,7 @@ const Contact: React.FC = () => {
 
         <div className="contact-form-section">
           <div className="dashboard-card">
-            <h3>Send Me a Message</h3>
+            <h3>Send Us a Message</h3>
             <form onSubmit={handleSubmit} className="contact-form">
               <div className="form-row">
                 <div className="form-group">
@@ -211,3 +209,4 @@ const Contact: React.FC = () => {
 };
 
 export default Contact;
+

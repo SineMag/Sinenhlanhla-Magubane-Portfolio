@@ -36,11 +36,11 @@ const Project: React.FC = () => {
             fontSize: "2.5rem",
           }}
         >
-          My Projects
+          Case Studies
         </h1>
         <p style={{ color: "#000000", marginTop: "1rem" }}>
-          A collection of innovative applications and solutions showcasing my
-          technical expertise
+          Selected software delivery examples across web, mobile, and data
+          products.
         </p>
       </div>
       <div className="projects-grid">
@@ -117,7 +117,7 @@ const Project: React.FC = () => {
           }}
         >
           <HiCode />
-          <span>View All on GitHub</span>
+          <span>View Company GitHub</span>
         </a>
       </div>
 
