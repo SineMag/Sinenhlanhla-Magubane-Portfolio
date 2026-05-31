@@ -1,5 +1,7 @@
 # Sinenhlanhla Magubane Portfolio
 
+<img src="https://socialify.git.ci/SineMag/Sinenhlanhla-Magubane-Portfolio/image?font=Bitter&language=1&name=1&owner=1&pattern=Transparent&theme=Dark" alt="Sinenhlanhla-Magubane-Portfolio" width="640" height="320" />
+
 A modern, responsive portfolio website built with React, TypeScript, and Vite. This portfolio showcases professional experience, skills, projects, and contact information with a beautiful gradient design.
 
 ## ✨ Features
